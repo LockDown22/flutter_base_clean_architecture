@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter_clean_architecture/injector/injector.dart';
 import 'package:flutter_clean_architecture/services/local_storage_service/local_service.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@singleton
 class SharedPreferenceService implements LocalService {
-  SharedPreferenceService() {
-    init();
-  }
   @override
   String accessTokenKey = 'tokenKey';
   @override
@@ -18,12 +16,6 @@ class SharedPreferenceService implements LocalService {
   String isFirstUseKey = 'isFirstUseKey';
 
   late final SharedPreferences _pref;
-
-  @override
-  Future<FutureOr<void>> init() async {
-    _pref = await SharedPreferences.getInstance();
-    Injector.instance.signalReady(this);
-  }
 
   @override
   getValue({required String key}) {

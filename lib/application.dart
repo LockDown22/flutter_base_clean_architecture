@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_clean_architecture/gen/strings.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'navigator/app_route.dart';
@@ -14,13 +14,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final FlutterI18nDelegate appLocalizationDelegate;
   late bool _isDarkmode;
   final _appRouter = AppRouter();
   @override
   void initState() {
     _isDarkmode = false;
-    appLocalizationDelegate = FlutterI18nDelegate();
 
     super.initState();
   }
@@ -28,17 +26,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      localizationsDelegates: [
-        appLocalizationDelegate,
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         DefaultCupertinoLocalizations.delegate
       ],
-      supportedLocales: [
-        appLocalizationDelegate.currentLocale ?? const Locale('vi', 'VN')
-      ],
+      supportedLocales: AppLocaleUtils.supportedLocales,
       themeMode: !_isDarkmode ? ThemeMode.light : ThemeMode.light,
+      locale: TranslationProvider.of(context).flutterLocale,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       routerConfig: _appRouter.config(),
