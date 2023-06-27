@@ -7,15 +7,16 @@ import 'package:flutter_clean_architecture/services/local_storage_service/shared
 class AttachTokenInterceptor extends InterceptorsWrapper {
   AttachTokenInterceptor();
 
-  final sharedPre = getIt<SharedPreferenceService>();
+  // final sharedPre = getIt<SharedPreferenceService>();
 
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final authCredential = sharedPre.getValue(key: 'tokenKey');
+    final authCredential = 'sharedPre.token';
+
     if (authCredential != null) {
-      options.headers.putIfAbsent(
-          'Authorization', () => 'Bearer ${authCredential.accessToken}');
+      options.headers
+          .putIfAbsent('Authorization', () => 'Bearer $authCredential');
     } else {
       log('Auth token is null');
     }

@@ -6,6 +6,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @singleton
 class SharedPreferenceService implements LocalService {
+  static final SharedPreferenceService _instance =
+      SharedPreferenceService._internal();
+
+  SharedPreferenceService._internal();
+  static late SharedPreferences _pref;
+
+  factory SharedPreferenceService() {
+    return _instance;
+  }
+
+  static Future<void> init() async {
+    _pref = await SharedPreferences.getInstance();
+  }
+
   @override
   String accessTokenKey = 'tokenKey';
   @override
@@ -14,8 +28,6 @@ class SharedPreferenceService implements LocalService {
   String isDarkModeKey = 'isDarkModeKey';
   @override
   String isFirstUseKey = 'isFirstUseKey';
-
-  late final SharedPreferences _pref;
 
   @override
   getValue({required String key}) {

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/gen/strings.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'configs/observer/router_observer.dart';
+import 'di/di.dart';
 import 'navigator/app_route.dart';
 import 'themes/app_themes.dart';
 
@@ -15,7 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late bool _isDarkmode;
-  final _appRouter = AppRouter();
   @override
   void initState() {
     _isDarkmode = false;
@@ -37,7 +38,8 @@ class _MyAppState extends State<MyApp> {
       locale: TranslationProvider.of(context).flutterLocale,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      routerConfig: _appRouter.config(),
+      routerConfig: getIt<AppRouter>()
+          .config(navigatorObservers: () => [LoggingRouterObserver()]),
       title: 'BoilerPlate',
       debugShowCheckedModeBanner: false,
     );

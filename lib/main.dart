@@ -6,11 +6,12 @@ import 'application.dart';
 import 'dart:async';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
-  AppConfig.configDev();
-  await di.configureInjection();
   runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    LocaleSettings.useDeviceLocale();
+    AppConfig.configDev();
+
+    await di.configureInjection();
     runApp(TranslationProvider(child: const MyApp()));
   }, (error, stack) {});
 }

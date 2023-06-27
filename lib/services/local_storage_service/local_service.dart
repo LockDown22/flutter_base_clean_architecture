@@ -5,7 +5,6 @@ abstract class LocalService {
   String localeKey = '';
   String isDarkModeKey = '';
   String isFirstUseKey = '';
-
   String? get token;
   String get locale;
   bool get isDarkMode;

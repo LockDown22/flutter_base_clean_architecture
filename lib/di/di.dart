@@ -9,4 +9,12 @@ final GetIt getIt = GetIt.instance;
   preferRelativeImports: true,
   asExtension: true,
 )
-Future<void> configureInjection() async => getIt.init();
+Future<void> configureInjection() async {
+  // final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.init();
+  // getIt.registerSingleton<SharedPreferences>(sharedPreferences);
+}
+
+// Future<void> sharedPrefConfig() async {
+//   getIt.registerSingleton(() => SharedPreferenceService.init());
+// }

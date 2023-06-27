@@ -13,10 +13,11 @@ import 'package:dio/dio.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../data/http_client.dart' as _i6;
+import '../configs/observer/bloc_observer.dart' as _i5;
+import '../data/http_client.dart' as _i7;
 import '../navigator/app_route.dart' as _i3;
 import '../services/local_storage_service/shared_preference_service.dart'
-    as _i5;
+    as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -35,9 +36,10 @@ extension GetItInjectableX on _i1.GetIt {
       httpClient.baseApi(),
       instanceName: 'baseApi',
     );
-    gh.singleton<_i5.SharedPreferenceService>(_i5.SharedPreferenceService());
+    gh.singleton<_i5.LoggingBlocObserver>(_i5.LoggingBlocObserver());
+    gh.singleton<_i6.SharedPreferenceService>(_i6.SharedPreferenceService());
     return this;
   }
 }
 
-class _$HttpClient extends _i6.HttpClient {}
+class _$HttpClient extends _i7.HttpClient {}

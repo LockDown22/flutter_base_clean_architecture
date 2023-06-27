@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Center(
         child: ElevatedButton(
             onPressed: () => context.router.push(const Test1Route()),
             child: Text('click')),
