@@ -25,14 +25,15 @@ class _StringsVi implements BaseTranslations<AppLocale, _StringsVi> {
 	late final _StringsVi _root = this; // ignore: unused_field
 
 	// Translations
-	late final _StringsStringsVi strings = _StringsStringsVi._(_root);
+	late final _StringsHelloVi hello = _StringsHelloVi._(_root);
 }
 
-// Path: strings
-class _StringsStringsVi {
-	_StringsStringsVi._(this._root);
+// Path: hello
+class _StringsHelloVi {
+	_StringsHelloVi._(this._root);
 
 	final _StringsVi _root; // ignore: unused_field
 
 	// Translations
+	String get say_hello => 'hello howKteam';
 }

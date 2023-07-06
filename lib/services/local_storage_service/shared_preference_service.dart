@@ -4,19 +4,19 @@ import 'package:flutter_clean_architecture/services/local_storage_service/local_
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@singleton
 class SharedPreferenceService implements LocalService {
+  late SharedPreferences _pref;
+
   static final SharedPreferenceService _instance =
       SharedPreferenceService._internal();
-
-  SharedPreferenceService._internal();
-  static late SharedPreferences _pref;
 
   factory SharedPreferenceService() {
     return _instance;
   }
 
-  static Future<void> init() async {
+  SharedPreferenceService._internal();
+
+  Future<void> initialize() async {
     _pref = await SharedPreferences.getInstance();
   }
 

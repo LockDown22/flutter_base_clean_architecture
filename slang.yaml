@@ -1,8 +1,8 @@
 namespaces: true
 base_locale: vi
 fallback_strategy: base_locale
-input_directory: assets/i18n
-output_directory: assets/i18n
+input_directory: lib/i18n
+output_directory: lib/i18n
 output_format: multiple_files
 string_interpolation: dart
 key_case: snake

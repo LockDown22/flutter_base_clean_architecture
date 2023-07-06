@@ -10,8 +10,8 @@ abstract class HttpClient {
   @singleton
   Dio baseApi() => createDio(
           baseOptions: BaseOptions(
-              // baseUrl: 'hahahahah',
-              ),
+            baseUrl: 'https://643eba07c72fda4a0bff46ab.mockapi.io/api/v1/',
+          ),
           interceptors: [
             AttachTokenInterceptor(),
           ]);

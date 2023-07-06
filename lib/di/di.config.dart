@@ -14,10 +14,11 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../configs/observer/bloc_observer.dart' as _i5;
-import '../data/http_client.dart' as _i7;
+import '../data/data_source/remote/api/mock_api.dart' as _i6;
+import '../data/http_client.dart' as _i9;
+import '../data/repository/mock_repository.dart' as _i7;
+import '../data/repository_impl/repository_impl.dart' as _i8;
 import '../navigator/app_route.dart' as _i3;
-import '../services/local_storage_service/shared_preference_service.dart'
-    as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -37,9 +38,12 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'baseApi',
     );
     gh.singleton<_i5.LoggingBlocObserver>(_i5.LoggingBlocObserver());
-    gh.singleton<_i6.SharedPreferenceService>(_i6.SharedPreferenceService());
+    gh.singleton<_i6.MockApi>(
+        _i6.MockApi(gh<_i4.Dio>(instanceName: 'baseApi')));
+    gh.factory<_i7.MockRepository>(
+        () => _i8.MockRepositoryImpl(gh<_i6.MockApi>()));
     return this;
   }
 }
 
-class _$HttpClient extends _i7.HttpClient {}
+class _$HttpClient extends _i9.HttpClient {}

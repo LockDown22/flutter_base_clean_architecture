@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 1
-/// Strings: 0
+/// Strings: 1
 ///
-/// Built on 2023-06-26 at 14:09 UTC
+/// Built on 2023-07-04 at 16:03 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -13,29 +13,26 @@ import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
-part 'strings_vi.g.dart';
-part 'strings_map.g.dart';
-
-const AppLocale _baseLocale = AppLocale.vi;
+const AppLocale _baseLocale = AppLocale.en;
 
 /// Supported locales, see extension methods below.
 ///
 /// Usage:
-/// - LocaleSettings.setLocale(AppLocale.vi) // set locale
-/// - Locale locale = AppLocale.vi.flutterLocale // get flutter locale from enum
-/// - if (LocaleSettings.currentLocale == AppLocale.vi) // locale check
-enum AppLocale with BaseAppLocale<AppLocale, _StringsVi> {
-	vi(languageCode: 'vi', build: _StringsVi.build);
+/// - LocaleSettings.setLocale(AppLocale.en) // set locale
+/// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
+/// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
+enum AppLocale with BaseAppLocale<AppLocale, _StringsEn> {
+	en(languageCode: 'en', build: _StringsEn.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
 	@override final String languageCode;
 	@override final String? scriptCode;
 	@override final String? countryCode;
-	@override final TranslationBuilder<AppLocale, _StringsVi> build;
+	@override final TranslationBuilder<AppLocale, _StringsEn> build;
 
 	/// Gets current instance managed by [LocaleSettings].
-	_StringsVi get translations => LocaleSettings.instance.translationMap[this]!;
+	_StringsEn get translations => LocaleSettings.instance.translationMap[this]!;
 }
 
 /// Method A: Simple
@@ -47,7 +44,7 @@ enum AppLocale with BaseAppLocale<AppLocale, _StringsVi> {
 /// Usage:
 /// String a = t.someKey.anotherKey;
 /// String b = t['someKey.anotherKey']; // Only for edge cases!
-_StringsVi get t => LocaleSettings.instance.currentTranslations;
+_StringsEn get t => LocaleSettings.instance.currentTranslations;
 
 /// Method B: Advanced
 ///
@@ -67,14 +64,14 @@ _StringsVi get t => LocaleSettings.instance.currentTranslations;
 class Translations {
 	Translations._(); // no constructor
 
-	static _StringsVi of(BuildContext context) => InheritedLocaleData.of<AppLocale, _StringsVi>(context).translations;
+	static _StringsEn of(BuildContext context) => InheritedLocaleData.of<AppLocale, _StringsEn>(context).translations;
 }
 
 /// The provider for method B
-class TranslationProvider extends BaseTranslationProvider<AppLocale, _StringsVi> {
+class TranslationProvider extends BaseTranslationProvider<AppLocale, _StringsEn> {
 	TranslationProvider({required super.child}) : super(settings: LocaleSettings.instance);
 
-	static InheritedLocaleData<AppLocale, _StringsVi> of(BuildContext context) => InheritedLocaleData.of<AppLocale, _StringsVi>(context);
+	static InheritedLocaleData<AppLocale, _StringsEn> of(BuildContext context) => InheritedLocaleData.of<AppLocale, _StringsEn>(context);
 }
 
 /// Method B shorthand via [BuildContext] extension method.
@@ -83,11 +80,11 @@ class TranslationProvider extends BaseTranslationProvider<AppLocale, _StringsVi>
 /// Usage (e.g. in a widget's build method):
 /// context.t.someKey.anotherKey
 extension BuildContextTranslationsExtension on BuildContext {
-	_StringsVi get t => TranslationProvider.of(this).translations;
+	_StringsEn get t => TranslationProvider.of(this).translations;
 }
 
 /// Manages all translation instances and the current locale
-class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _StringsVi> {
+class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _StringsEn> {
 	LocaleSettings._() : super(utils: AppLocaleUtils.instance);
 
 	static final instance = LocaleSettings._();
@@ -109,7 +106,7 @@ class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _StringsVi> {
 }
 
 /// Provides utility functions without any side effects.
-class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _StringsVi> {
+class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _StringsEn> {
 	AppLocaleUtils._() : super(baseLocale: _baseLocale, locales: AppLocale.values);
 
 	static final instance = AppLocaleUtils._();
@@ -120,4 +117,46 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _StringsVi> {
 	static AppLocale findDeviceLocale() => instance.findDeviceLocale();
 	static List<Locale> get supportedLocales => instance.supportedLocales;
 	static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
+}
+
+// translations
+
+// Path: <root>
+class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
+
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsEn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.en,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <en>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
+
+	/// Access flat map
+	dynamic operator[](String key) => $meta.getTranslation(key);
+
+	late final _StringsEn _root = this; // ignore: unused_field
+
+	// Translations
+	String get say_hello => 'hello howKteam';
+}
+
+/// Flat map(s) containing all translations.
+/// Only for edge cases! For simple maps, use the map function of this library.
+
+extension on _StringsEn {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'say_hello': return 'hello howKteam';
+			default: return null;
+		}
+	}
 }
