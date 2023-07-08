@@ -1,3 +1,5 @@
+import 'package:flutter_clean_architecture/configs/app_config.dart';
+import 'package:flutter_clean_architecture/configs/interceptors/api_key_interceptor.dart';
 import 'package:flutter_clean_architecture/configs/interceptors/attach_token_interceptor.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
@@ -10,9 +12,10 @@ abstract class HttpClient {
   @singleton
   Dio baseApi() => createDio(
           baseOptions: BaseOptions(
-            baseUrl: 'https://643eba07c72fda4a0bff46ab.mockapi.io/api/v1/',
+            baseUrl: AppConfig.baseUrl,
           ),
           interceptors: [
+            ApiKeyInterceptor(AppConfig.apiKey),
             AttachTokenInterceptor(),
           ]);
 }

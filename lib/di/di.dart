@@ -15,5 +15,6 @@ Future<void> configureInjection() async {
 }
 
 Future<void> registerService() async {
+  await SharedPreferenceService().initialize();
   getIt.registerSingleton<SharedPreferenceService>(SharedPreferenceService());
 }

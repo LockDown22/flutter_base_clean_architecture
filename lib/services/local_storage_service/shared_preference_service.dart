@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter_clean_architecture/services/local_storage_service/local_service.dart';
-import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceService implements LocalService {

@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'configs/observer/router_observer.dart';
 import 'di/di.dart';
 import 'navigator/app_route.dart';
-import 'themes/app_themes.dart';
+import 'common/theme/app_themes.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

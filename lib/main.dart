@@ -11,7 +11,6 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     LocaleSettings.useDeviceLocale();
     AppConfig.configDev();
-    await SharedPreferenceService().initialize();
     await di.registerService();
     await di.configureInjection();
     runApp(TranslationProvider(child: const MyApp()));
